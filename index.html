@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Langages HTML et CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+        
+        .description {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: #f9f9f9;
+        }
+        
+        input[type="email"]:valid {
+            border-color: #4CAF50;
+            background-color: #f0f8f0;
+        }
+        
+        input[type="email"]:invalid {
+            border-color: #f44336;
+            background-color: #fff0f0;
+        }
+        
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+        
+        .radio-option,
+        .checkbox-option {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .radio-option label,
+        .checkbox-option label {
+            margin: 0;
+            font-weight: normal;
+            cursor: pointer;
+            display: inline;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: #45a049;
+        }
+        
+        button:active {
+            background-color: #3d8b40;
+        }
+        
+        .required::after {
+            content: " *";
+            color: #f44336;
+        }
+        
+        optgroup {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        option {
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz - Langages HTML et CSS</h1>
+        
+        <p class="description">
+            Bienvenue dans ce quiz interactif dédié aux langages HTML et CSS ! 
+            Ce formulaire a pour objectif d'évaluer vos connaissances fondamentales 
+            sur la structure et la présentation des pages web. Prenez le temps de répondre 
+            attentivement à chaque question. Les champs marqués d'un astérisque (*) sont obligatoires.
+        </p>
+        
+        <form method="POST" action="/submit-quiz" novalidate>
+            <!-- Section Identification -->
+            <fieldset>
+                <legend><strong>Identification de l'étudiant</strong></legend>
+                
+                <div class="form-group">
+                    <label for="nom" class="required">Nom</label>
+                    <input 
+                        type="text" 
+                        id="nom" 
+                        name="nom" 
+                        placeholder="Entrez votre nom"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="prenom" class="required">Prénom</label>
+                    <input 
+                        type="text" 
+                        id="prenom" 
+                        name="prenom" 
+                        placeholder="Entrez votre prénom"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Adresse E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        placeholder="exemple@domaine.com"
+                        required
+                    >
+                </div>
+            </fieldset>
+            
+            <!-- Date du Quiz -->
+            <div class="form-group">
+                <label for="date-quiz" class="required">Date du Quiz</label>
+                <input 
+                    type="date" 
+                    id="date-quiz" 
+                    name="date-quiz"
+                    required
+                >
+                <small style="color: #999; margin-top: 5px; display: block;">
+                    Note : Le champ date peut ne pas fonctionner de la même manière sur tous les navigateurs. 
+                    Les navigateurs modernes offrent un sélecteur de date intégré.
+                </small>
+            </div>
+            
+            <!-- Question 1 : Choix unique (Radio buttons) -->
+            <div class="form-group">
+                <label class="required">Quelle balise HTML est utilisée pour créer un lien hypertexte ?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input 
+                            type="radio" 
+                            id="q1-a" 
+                            name="question-1" 
+                            value="a"
+                            required
+                        >
+                        <label for="q1-a">&lt;a&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input 
+                            type="radio" 
+                            id="q1-b" 
+                            name="question-1" 
+                            value="b"
+                        >
+                        <label for="q1-b">&lt;link&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input 
+                            type="radio" 
+                            id="q1-c" 
+                            name="question-1" 
+                            value="c"
+                        >
+                        <label for="q1-c">&lt;url&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input 
+                            type="radio" 
+                            id="q1-d" 
+                            name="question-1" 
+                            value="d"
+                        >
+                        <label for="q1-d">&lt;href&gt;</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 2 : Choix multiples (Checkboxes) -->
+            <div class="form-group">
+                <label class="required">Quels sélecteurs CSS parmi les suivants peuvent être utilisés pour sélectionner des éléments ? (Cochez toutes les réponses correctes)</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input 
+                            type="checkbox" 
+                            id="q2-a" 
+                            name="question-2" 
+                            value="a"
+                        >
+                        <label for="q2-a">Sélecteur de classe (.classname)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input 
+                            type="checkbox" 
+                            id="q2-b" 
+                            name="question-2" 
+                            value="b"
+                        >
+                        <label for="q2-b">Sélecteur d'ID (#idname)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input 
+                            type="checkbox" 
+                            id="q2-c" 
+                            name="question-2" 
+                            value="c"
+                        >
+                        <label for="q2-c">Sélecteur d'élément (div, p, span)</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input 
+                            type="checkbox" 
+                            id="q2-d" 
+                            name="question-2" 
+                            value="d"
+                        >
+                        <label for="q2-d">Sélecteur @media</label>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Question 3 : Liste déroulante (Dropdown) -->
+            <div class="form-group">
+                <label for="question-3">Quel est le rôle principal du DOCTYPE en HTML ?</label>
+                <select id="question-3" name="question-3">
+                    <option value="">-- Sélectionnez une réponse --</option>
+                    <optgroup label="Réponses">
+                        <option value="a">Définir le type de document et la version HTML utilisée</option>
+                        <option value="b">Créer un lien vers une feuille de style CSS</option>
+                        <option value="c">Définir les métadonnées de la page</option>
+                        <option value="d">Charger des scripts JavaScript externes</option>
+                    </optgroup>
+                </select>
+            </div>
+            
+            <!-- Question 4 : Textarea pour code -->
+            <div class="form-group">
+                <label for="code-html" class="required">Écrivez un code HTML ou CSS qui démontre votre compréhension. Par exemple, créez un paragraphe stylisé ou une liste.</label>
+                <textarea 
+                    id="code-html" 
+                    name="code-html" 
+                    placeholder="&lt;p style=&quot;color: blue;&quot;&gt;Votre code ici...&lt;/p&gt;"
+                    required
+                ></textarea>
+            </div>
+            
+            <!-- Bouton Envoyer -->
+            <div class="form-group">
+                <button type="submit">Envoyer le Quiz</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
